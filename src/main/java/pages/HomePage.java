@@ -1,7 +1,7 @@
 package pages;
 
 import elements.HeaderMenu;
-import elements.LeftMenu;
+import elements.LeftElements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +12,7 @@ import java.util.List;
 public class HomePage {
 
     private final HeaderMenu headerMenu;
-    private final LeftMenu leftMenu;
+    private final LeftElements leftMenu;
     private final WebDriver driver;
 
     @FindBy(css = "a[href = '#']")
@@ -51,7 +51,7 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
         headerMenu = new HeaderMenu(this.driver);
-        leftMenu = new LeftMenu(this.driver);
+        leftMenu = new LeftElements(this.driver);
         PageFactory.initElements(this.driver, this);
     }
 
@@ -74,7 +74,7 @@ public class HomePage {
         return this.headerMenu;
     }
 
-    public LeftMenu getLeftMenu() {
+    public LeftElements getLeftMenu() {
         return leftMenu;
     }
 

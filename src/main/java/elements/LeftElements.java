@@ -7,25 +7,26 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class LeftMenu {
+public class LeftElements {
     @FindBy(css = "ul[class = 'sidebar-menu left']>li>a>span")
     private List<WebElement> leftMenuItems;
 
-    public LeftMenu(WebDriver driver) {
+    public LeftElements(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
     public List<WebElement> getLeftMenuItems() {
         return this.leftMenuItems;
-
-
-    public void clickLeftMenuItems(final String item) {
-        for (WebElement element : leftMenuItems) {
-             if (item.equals(element.getText())) {
-                element.click();
-                break;
-                }
-        }
-
     }
+
+
+        public void clickLeftMenuItems(final String item) {
+            for (WebElement element : leftMenuItems) {
+                if (item.equals(element.getText())) {
+                    element.click();
+                    break;
+                }
+            }
+
+        }
 }
