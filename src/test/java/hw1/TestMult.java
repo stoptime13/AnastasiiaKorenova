@@ -20,8 +20,8 @@ public class TestMult extends InitClass{
     }
 
     @Test(dataProvider = "MultDataProvider", groups = "MultDiv")
-    public void testAddition(double a, double b, double result) {
+    public void testMult(double a, double b, double result) {
         double mult = calculator.mult(a, b);
-        Assert.assertEquals(mult, result);
+        Assert.assertEquals(mult, result, 0.7);
     }
 }

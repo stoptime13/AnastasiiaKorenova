@@ -19,8 +19,8 @@ public class TestDiv extends InitClass{
     }
 
     @Test(dataProvider = "DivDataProvider", groups = "MultDiv")
-    public void testAddition(double a, double b, double result) {
+    public void testDiv(double a, double b, double result) {
         double div = calculator.div(a, b);
-        Assert.assertEquals(div, result);
+        Assert.assertEquals(div, result, 0.01);
     }
 }
