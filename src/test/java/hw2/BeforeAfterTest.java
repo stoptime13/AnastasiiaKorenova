@@ -4,26 +4,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.asserts.SoftAssert;
+import org.testng.annotations.BeforeSuite;
 
 import java.time.Duration;
 
 public class BeforeAfterTest {
 
-    protected static SoftAssert softAssert;
     protected static WebDriver driver;
+
+    @BeforeSuite
+    public void initDriver(){
+        String path = "src/test/resources/chromedriver.exe";
+        System.setProperty("webdriver.chrome.driver", path);
+    }
+
 
     @BeforeMethod
     public void init(){
-        String path = "src/test/resources/chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", path);
-
-        softAssert = new SoftAssert();
-
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
     }
 
     @AfterMethod

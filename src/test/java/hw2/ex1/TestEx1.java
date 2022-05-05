@@ -4,6 +4,7 @@ import hw2.BeforeAfterTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
@@ -11,10 +12,12 @@ public class TestEx1 extends BeforeAfterTest {
 
     @Test
     public void testEx1(){
+
         //Exercise 1 (1 - Open test site by URL)
         driver.get("https://jdi-testing.github.io/jdi-light/index.html");
 
         //Exercise 1 (2 - Assert Browser title)
+        SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(driver.getTitle(),"Home Page");
 
         //Exercise 1 (3 - Perform login)
@@ -28,7 +31,7 @@ public class TestEx1 extends BeforeAfterTest {
 
         //Exercise 1 (5 - Assert that there are 4 items on the header section are displayed and they have proper texts)
         String[] selectors = {"a[href=\"index.html\"]", "a[href=\"contacts.html\"]", ".dropdown-toggle", "a[href=\"metals-colors.html\"]"};
-        String[] expectedName = {"Home", "Contact form", "Service", "Metals & Colors"};
+        String[] expectedName = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
         for(int i = 0; i < 4; i++){
             softAssert.assertEquals(driver.findElement(By.cssSelector(selectors[i])).getText(), expectedName[i]);
             softAssert.assertTrue(driver.findElement(By.cssSelector(selectors[i])).isDisplayed());
@@ -61,11 +64,12 @@ public class TestEx1 extends BeforeAfterTest {
         driver.switchTo().parentFrame();
 
         //Exercise 1 (11 - Assert that there are 5 items in the Left Section are displayed and they have proper text)
-        String[] expectedHeader = {"Home", "Contact form", "Service", "Metals & Colors", "Elements packs"};
+        String[] expectedHeader = {"HOME", "CONTACT FORM", "Service", "METALS & COLORS", "Elements packs"};
         String[] selectorItems = {"a[href=\"index.html\"]", "a[href=\"contacts.html\"]", "li[index = \"3\"]", "a[href=\"metals-colors.html\"]","li[index = \"3\"]"};
         for(int i = 0; i < 4; i++){
             softAssert.assertEquals(driver.findElement(By.cssSelector(selectorItems[i])).getText(), expectedHeader[i]);
             softAssert.assertTrue(driver.findElement(By.cssSelector(selectorItems[i])).isDisplayed());
         }
+        softAssert.assertAll();
     }
 }
