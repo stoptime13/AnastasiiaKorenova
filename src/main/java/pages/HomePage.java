@@ -1,7 +1,7 @@
-package page;
+package pages;
 
 import elements.HeaderMenu;
-import elements.LeftM;
+import elements.LeftMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +12,23 @@ import java.util.List;
 public class HomePage {
 
     private final HeaderMenu headerMenu;
-    private final LeftM leftM;
+    private final LeftMenu leftMenu;
     private final WebDriver driver;
-    private final UserLogin userLogin;
+
+    @FindBy(css = "a[href = '#']")
+    private WebElement loginSymbol;
+
+    @FindBy(id = "name")
+    private WebElement login;
+
+    @FindBy(id = "password")
+    private WebElement passwd;
+
+    @FindBy(id = "login-button")
+    private WebElement logButton;
+
+    @FindBy(id = "user-name")
+    private WebElement userName;
 
     @FindBy(className = "benefit-icon")
     private List<WebElement> icon;
@@ -37,9 +51,19 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
         headerMenu = new HeaderMenu(this.driver);
-        leftM = new LeftM(this.driver);
-        userLogin = new UserLogin(driver);
+        leftMenu = new LeftMenu(this.driver);
         PageFactory.initElements(this.driver, this);
+    }
+
+    public void loginUser(String userName, String password) {
+        this.loginSymbol.click();
+        this.login.sendKeys(userName);
+        this.passwd.sendKeys(password);
+        this.logButton.click();
+    }
+
+    public String getUserName() {
+        return this.userName.getText();
     }
 
     public void openURL(String url) {
@@ -50,8 +74,8 @@ public class HomePage {
         return this.headerMenu;
     }
 
-    public LeftM getLeftM() {
-        return leftM;
+    public LeftMenu getLeftMenu() {
+        return leftMenu;
     }
 
     public void clickDropdownMenu(final String item) {

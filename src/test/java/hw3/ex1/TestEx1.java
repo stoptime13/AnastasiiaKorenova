@@ -1,16 +1,12 @@
 package hw3.ex1;
 
 import hw3.BeforeAfterTestHw3;
-import org.openqa.selenium.By;
-import page.UserLogin;
+import org.testng.asserts.SoftAssert;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import page.HomePage;
+import pages.HomePage;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 
 public class TestEx1 extends BeforeAfterTestHw3 {
@@ -18,24 +14,26 @@ public class TestEx1 extends BeforeAfterTestHw3 {
     @Test
     public void testEx1() {
         HomePage homePage = new HomePage(driver);
-        UserLogin userLogin = new UserLogin(driver);
 
         //Exercise 1 (1 - Open test site by URL)
         homePage.openURL(properties.getProperty("url"));
 
         //Exercise 1 (2 - Assert Browser title)
+        SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(driver.getTitle(), "Home Page");
 
         //Exercise 1 (3 - Perform login)
-        userLogin.loginUser(properties.getProperty("login"), properties.getProperty("passwd"));
+        homePage.loginUser(properties.getProperty("login"), properties.getProperty("passwd"));
 
         //Exercise 1 (4 - Assert Username is loggined)
-        softAssert.assertEquals(userLogin.getUserName(), "ROMAN IOVLEV");
+        softAssert.assertEquals(homePage.getUserName(), "ROMAN IOVLEV");
 
         //Exercise 1 (5 - Assert that there are 4 items on the header section are displayed and they have proper texts)
-        List<WebElement> navigationBar =homePage.getHeaderMenu().getNavigationItems();
-        for(WebElement element: navigationBar){
-            softAssert.assertTrue(element.isDisplayed());
+        List<WebElement> navigationBar = homePage.getHeaderMenu().getNavigationItems();
+        String[] expectedName = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
+        for(int i = 0; i < expectedName.length; i++){
+            softAssert.assertEquals(navigationBar.get(i).getText(), expectedName[i]);
+            softAssert.assertTrue(navigationBar.get(i).isDisplayed());
         }
 
         //Exercise 1 (6 - Assert that there are 4 images on the Index Page and they are displayed)
@@ -66,7 +64,7 @@ public class TestEx1 extends BeforeAfterTestHw3 {
 
         //Exercise 1 (11 - Assert that there are 5 items in the Left Section are displayed and they have proper text)
         String[] expectedHeader = {"Home", "Contact form", "Service", "Metals & Colors", "Elements packs"};
-        List<WebElement> nameHeader = homePage.getLeftM().getLeftMenuItems();
+        List<WebElement> nameHeader = homePage.getLeftMenu().getLeftMenuItems();
         for(int i =0; i < nameHeader.size(); i++){
             softAssert.assertEquals(nameHeader.get(i).getText(), expectedHeader[i]);
             softAssert.assertTrue(nameHeader.get(i).isDisplayed());

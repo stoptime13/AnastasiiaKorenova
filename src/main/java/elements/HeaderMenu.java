@@ -29,17 +29,4 @@ public class HeaderMenu {
             }
         }
     }
-
-//    public WebElement getSubitemByText(String itemText, String subitemText) {
-//        WebElement item = getItemByText(itemText);
-//        item.click();
-//        List<WebElement> subitems = item.findElements(By.tagName("li"));
-//        for (WebElement sub : subitems) {
-//            if (sub.getText().equals(subitemText)) {
-//                return sub;
-//            }
-//        }
-//        return null;
-//    }
-
 }
