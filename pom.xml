@@ -142,6 +142,13 @@
                 <testng.suite.file>${project.build.testOutputDirectory}/UISuite4.xml</testng.suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>UISuite5</id>
+            <properties>
+                <testng.suite.file>${project.build.testOutputDirectory}/UISuite5.xml</testng.suite.file>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
