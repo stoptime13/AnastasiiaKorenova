@@ -22,7 +22,7 @@ public class TestSum extends InitClass{
     @Test(dataProvider = "SumDataProvider", groups = "SumSub")
     public void testSum(double a, double b, double result) {
         double sum = calculator.sum(a, b);
-        Assert.assertEquals(sum, result);
+        Assert.assertEquals(sum, result, 1e-4);
     }
 
 }

@@ -22,6 +22,6 @@ public class TestMult extends InitClass{
     @Test(dataProvider = "MultDataProvider", groups = "MultDiv")
     public void testMult(double a, double b, double result) {
         double mult = calculator.mult(a, b);
-        Assert.assertEquals(mult, result, 0.7);
+        Assert.assertEquals(mult, result, 1e-4);
     }
 }

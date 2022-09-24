@@ -21,7 +21,7 @@ public class TestSub extends InitClass{
     @Test(dataProvider = "SubDataProvider", groups = "SumSub")
     public void testSub(double a, double b, double result) {
         double sub = calculator.sub(a, b);
-        Assert.assertEquals(sub, result, 0.01);
+        Assert.assertEquals(sub, result, 1e-4);
     }
 
 }
