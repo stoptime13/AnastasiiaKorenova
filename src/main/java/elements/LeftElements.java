@@ -20,13 +20,13 @@ public class LeftElements {
     }
 
 
-        public void clickLeftMenuItems(final String item) {
-            for (WebElement element : leftMenuItems) {
-                if (item.equals(element.getText())) {
-                    element.click();
-                    break;
-                }
+    public void clickLeftMenuItems(final String item) {
+        for (WebElement element : leftMenuItems) {
+            if (item.equals(element.getText())) {
+                element.click();
+                break;
             }
-
         }
+
+    }
 }

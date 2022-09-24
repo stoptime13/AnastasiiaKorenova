@@ -56,7 +56,7 @@ public class TestEx1 extends BeforeAfterTestHw3 {
         softAssert.assertTrue(homePage.getFrame().isDisplayed());
 
         //Exercise 1 (9 - Switch to the iframe and check that there is “Frame Button” in the iframe)
-        driver.switchTo().frame("frame");
+        driver.switchTo().frame(homePage.getFrame());
         softAssert.assertTrue(homePage.getFrameButton().isDisplayed());
 
         //Exercise 1 (10 - Switch to original window back)
