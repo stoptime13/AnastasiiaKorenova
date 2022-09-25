@@ -42,10 +42,10 @@ public class AssertionStep extends AbstractStep {
     }
 
     @Step("Exercise 1 (7 - Assert that there are 4 texts on the Index Page under icons and they have proper text 4 texts below of each image Texts are displayed and equal to expected)")
-    public void assertIconText(String[] expectedText) {
+    public void assertIconText(List<String> expectedText) {
         List<WebElement> benefit = homePage.getBenefitTxt();
         for(int i = 0; i < 4; i++){
-            softAssert.assertEquals(benefit.get(i).getText(), expectedText[i]);
+            softAssert.assertEquals(benefit.get(i).getText(), expectedText.get(i));
         }
     }
 

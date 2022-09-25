@@ -7,6 +7,9 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Listeners({ScreenshotListener.class})
 @Feature("HomePage test class")
 public class TestEx1 extends BeforeAfterTestHw4 {
@@ -35,10 +38,17 @@ public class TestEx1 extends BeforeAfterTestHw4 {
         assertionStep.assertIcons();
 
         //Exercise 1 (7 - Assert that there are 4 texts on the Index Page under icons and they have proper text	4 texts below of each image	Texts are displayed and equal to expected)
-        String[] expectedText = {"To include good practices\nand ideas from successful\nEPAM project",
-                "To be flexible and\ncustomizable",
+        List<String> expectedText = Arrays.asList(
+                "To include good practices\n" +
+                        "and ideas from successful\n" +
+                        "EPAM project",
+                "To be flexible and\n" +
+                        "customizable",
                 "To be multiplatform",
-                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"};
+                "Already have good base\n" +
+                        "(about 20 internal and\n" +
+                        "some external projects),\n" +
+                        "wish to get more…");
         assertionStep.assertIconText(expectedText);
 
         //Exercise 1 (8 - Assert that there is the iframe with “Frame Button” exist)
