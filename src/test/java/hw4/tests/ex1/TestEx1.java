@@ -38,7 +38,7 @@ public class TestEx1 extends BeforeAfterTestHw4 {
         String[] expectedText = {"To include good practices\nand ideas from successful\nEPAM project",
                 "To be flexible and\ncustomizable",
                 "To be multiplatform",
-                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"};
+                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get moreЂ¦"};
         assertionStep.assertIconText(expectedText);
 
         //Exercise 1 (8 - Assert that there is the iframe with “Frame Button” exist)
