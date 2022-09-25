@@ -48,7 +48,7 @@ public class TestEx1 extends BeforeAfterTestHw4 {
                 "Already have good base\n" +
                         "(about 20 internal and\n" +
                         "some external projects),\n" +
-                        "wish to get more…");
+                        "wish to get more\u2026");
         assertionStep.assertIconText(expectedText);
 
         //Exercise 1 (8 - Assert that there is the iframe with “Frame Button” exist)
